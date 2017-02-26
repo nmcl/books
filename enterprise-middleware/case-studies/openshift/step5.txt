@@ -1,0 +1,44 @@
+Services provide internal abstraction and load balancing within an OpenShift environment, sometimes clients (users, systems, devices, etc.) outside of OpenShift need to access an application. The way that external clients are able to access applications running in OpenShift is through the OpenShift routing layer. And the data object behind that is a Route.
+
+The default OpenShift router (HAProxy) uses the HTTP header of the incoming request to determine where to proxy the connection. You can optionally define security, such as TLS, for the Route. If you want your Services, and, by extension, your Pods, to be accessible to the outside world, you need to create a Route.
+
+Task: Creating a Route
+Fortunately, creating a Route is a pretty straight-forward process. You just click the "Create Route" button associated with the service.
+
+----
+
+Screen Shot 2017-02-26 at 18.40.38
+
+----
+
+By default OpenShift is configured to create the Route based on the Service name being exposed and the Project where the application lives, adding a common subdomain configured at the platform level. In our scenario, we have https://2886795293-8443-frugo01.environments.katacoda.com. This means that there is no need to change the default settings in the Route creation form.
+
+Once you click Create, the Route will be created and displayed in the Overview page.
+
+----
+
+Screen Shot 2017-02-26 at 18.41.25
+
+----
+
+Screen Shot 2017-02-26 at 18.41.56
+
+----
+
+Currently the list of Routes will only display the one we just created.
+
+----
+
+Screen Shot 2017-02-26 at 18.42.18
+
+----
+
+In this list we will be able to see the details associated with the route, like the hostname, the service, the port the route is exposing, and details on the TLS security for the route, if any.
+
+You can always click on the Route name in this list to modify an existing Route.
+
+Now that we know how to create a Route, let's verify that the application is really available at the URL shown in the web console. Click the link and you will see:
+
+----
+
+Screen Shot 2017-02-26 at 18.43.35
