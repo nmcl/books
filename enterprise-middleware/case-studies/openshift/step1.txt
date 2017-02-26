@@ -1,0 +1,47 @@
+Based on https://openshift.katacoda.com/introduction/getting-started/
+
+----
+
+Task
+Let's get started by logging in. Your task is to enter the following into the console:
+
+oc login
+
+When prompted, enter the following username and password:
+
+Username: developer
+
+Password: developer
+
+Next, you can check if it was successful:
+
+oc whoami
+
+Should return a response of:
+
+developer
+
+----
+
+Your Interactive Learning Environment Bash Terminal
+
+
+$
+$ ~/.launch.sh
+Starting OpenShift
+Waiting for OpenShift to start... This may take a couple of moments
+OpenShift started.
+Configuring... OpenShift Ready
+$ oc login
+Authentication required for https://172.17.0.52:8443 (openshift)
+Username: developer
+Password:
+Login successful.
+
+You don't have any projects. You can try to create a new project, by running
+
+    oc new-project <projectname>
+
+$ oc whoami
+developer
+$

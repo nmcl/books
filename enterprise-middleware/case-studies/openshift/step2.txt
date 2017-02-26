@@ -1,0 +1,33 @@
+To begin, click on the Dashboard tab in the console frame of this browser window. This will open the web console link in another tab or window of your browser.
+
+You should see an OpenShift Origin window with Username and Password forms, similar to this one:
+
+OpenShift Origin Web Console For this scenario, start by entering the following:
+
+Username: developer
+
+Password: developer
+
+After logging in to the web console, you'll see a button labeled: New Project. Click this to get started.
+
+You should now see a page for creating your first project in web console. Fill it in with the following:
+
+New project
+
+*Name
+
+myproject
+
+The rest is optional and up to you. Be careful with all of that responsibility.
+
+After your project is created, you'll be taken to a screen where you can begin adding content to your project.
+
+----
+
+Screen Shot 2017-02-26 at 18.12.31
+
+----
+
+Screen Shot 2017-02-26 at 18.14.48
+
+----
