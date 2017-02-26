@@ -1,0 +1,1 @@
+This chapter will consolidate the middleware concepts, techniques and plat- forms discussed in Part II by presenting detailed descriptions of a few complete systems. Where, by ’system’ we mean a complete middleware stack, an appli- cation building framework that makes use of such a stack or a cloud computing platform.
