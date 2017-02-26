@@ -1,0 +1,1 @@
+Openshift will serve as an example of PaaS cloud that can be used for managing containerized applications.
