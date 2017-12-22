@@ -2,9 +2,15 @@ package ejm.chapter6.stock;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Hashtable;
+
+import javax.json.Json;
+import javax.json.JsonReader;
+import javax.json.JsonObject;
 
 import javax.ws.rs.core.MediaType;
 
@@ -19,7 +25,8 @@ import com.netflix.hystrix.HystrixThreadPoolProperties;
 public class StockCommand extends HystrixCommand<String> {
     // For simulating failures
     private static AtomicInteger counter = new AtomicInteger(1);
-
+    private static Hashtable<String, Double> previousQuotes = new Hashtable();  // a cached copy of relevant previous day quotes
+    
     private final String stockCode;
 
     public StockCommand(String stockCode) {
@@ -50,15 +57,7 @@ public class StockCommand extends HystrixCommand<String> {
         if (requestNum % 10 == 0) {
             throw new RuntimeException("Simulated Failure!");
         }
-
-	/**
-	 * Commented out from the original code.
-	 *
-	 * if (requestNum % 2 == 0) {
-	 * Thread.sleep(10000);
-	 * }
-	 */
-
+	
         // The actual request
         HttpURLConnection connection = null;
 
@@ -84,6 +83,24 @@ public class StockCommand extends HystrixCommand<String> {
 
             System.err.println("Successfully executed stock price request for: " + this.stockCode);
 
+	    /**
+	     * In the real world we'd only do this once a day.
+	     *
+	     * @nmcl
+	     */
+
+	    Double previousQuote = previousQuotes.get(stockCode);
+	    
+	    if (previousQuote == null)
+	    {
+		JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));
+		JsonObject object = jsonReader.readObject();
+		
+		jsonReader.close();
+
+		previousQuotes.put(stockCode, new Double(object.getJsonObject("quotes").getJsonObject("quote").getJsonNumber("prevclose").doubleValue()));
+	    }
+
             return response.toString() + " { \"request_num\":" + "\"" + requestNum + "\" }";
         } finally {
             assert connection != null;
@@ -93,7 +110,7 @@ public class StockCommand extends HystrixCommand<String> {
 
     @Override
     protected String getFallback() {
-        return "Yesterdays price for " + this.stockCode;
+        return "Yesterdays price for " + this.stockCode + " " + this.previousQuotes.get(stockCode);
     }
 
     @Override
