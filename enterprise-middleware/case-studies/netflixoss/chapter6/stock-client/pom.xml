@@ -10,12 +10,12 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <artifactId>chapter6-resteasy-client</artifactId>
-  <name>Chapter 6: RESTEasy Client</name>
+  <artifactId>chapter6-stock-client</artifactId>
+  <name>Chapter 6: Stock Client</name>
   <packaging>war</packaging>
 
   <build>
-    <finalName>resteasyclient</finalName>
+    <finalName>stockclient</finalName>
 
     <plugins>
       <plugin>
@@ -34,6 +34,11 @@
   </build>
 
   <dependencies>
+     <dependency>
+      <groupId>org.glassfish</groupId>
+      <artifactId>javax.json</artifactId>
+      <version>1.0.2</version>
+    </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs</artifactId>
@@ -41,16 +46,6 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>hystrix</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>topology-jgroups</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.resteasy</groupId>
-      <artifactId>resteasy-client</artifactId>
-      <version>3.0.19.Final</version>
-      <scope>provided</scope>
     </dependency>
   </dependencies>
 </project>
