@@ -1,4 +1,4 @@
 # books
-Materials for various books in progress.
+Materials for books in progress.
 
 Licences within specific subdirectories.
