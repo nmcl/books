@@ -4,6 +4,3 @@ the developer landscape is having similar impact on NetflixOSS which therefore i
 
 Example copies (with permission) from https://github.com/kenfinnigan/ejm-samples which are examples for
 the book Enterprise Java Microservices (https://www.manning.com/books/enterprise-java-microservices).
-
-Note, this is not meant to be a buildable source tree and is only here for illustration purposes within the
-actual book.
