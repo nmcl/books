@@ -1,4 +1,4 @@
-package ejm.chapter6.stock;
+package ejm.stock;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
