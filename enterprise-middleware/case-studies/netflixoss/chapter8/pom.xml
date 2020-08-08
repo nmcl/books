@@ -16,8 +16,5 @@
 
   <modules>
     <module>stock-client</module>
-    <module>stripe</module>
-    <module>ribbon-client</module>
-    <module>resteasy-client</module>
   </modules>
 </project>
