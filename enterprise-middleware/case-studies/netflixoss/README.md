@@ -3,6 +3,7 @@ developer interest. Furthermore, the influence of new technologies like Kubernet
 the developer landscape is having similar impact on NetflixOSS which therefore is a useful exemplar of evolution.
 
 Example copies (with permission) from https://github.com/kenfinnigan/ejm-samples which are examples for
-the book Enterprise Java Microservices (https://www.manning.com/books/enterprise-java-microservices).
+the book Enterprise Java Microservices (https://www.manning.com/books/enterprise-java-microservices). Some files
+edited so they will build from here without needing the rest of the original book's example code.
 
 Note, Java 1.8 only.
