@@ -70,12 +70,11 @@ public class StockObservableCommand extends HystrixObservableCommand<String> {
         HttpURLConnection connection = null;
 
         try {
-            URL url = new URL("https://sandbox.tradier.com/v1/markets/quotes?symbols=" + stockCode);
+            URL url = new URL("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM"+stockCode+"&apikey=demo");	    
             connection = (HttpURLConnection) url.openConnection();
 
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", MediaType.APPLICATION_JSON);
-            connection.setRequestProperty("Authorization", "Bearer vGSq5QgMpwaiFYjgE8HtFoVfeVus");
 
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 throw new RuntimeException("Request Failed: HTTP Error code: " + connection.getResponseCode());
@@ -98,10 +97,10 @@ public class StockObservableCommand extends HystrixObservableCommand<String> {
                 JsonObject object = jsonReader.readObject();
                 jsonReader.close();
                 previousQuotes.put(stockCode,
-                                   object.getJsonObject("quotes")
-                                           .getJsonObject("quote")
-                                           .getJsonNumber("prevclose")
-                                           .doubleValue());
+                                   object.getJsonObject("Global Quote")
+                                           .getJsonObject("price")
+                                           .getJsonNumber("previous close")
+                                           .doubleValue());		
             }
 
             return Json.createObjectBuilder()
