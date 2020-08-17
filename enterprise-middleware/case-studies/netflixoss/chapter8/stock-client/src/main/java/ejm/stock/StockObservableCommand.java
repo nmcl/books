@@ -70,9 +70,9 @@ public class StockObservableCommand extends HystrixObservableCommand<String> {
         HttpURLConnection connection = null;
 
         try {
-            URL url = new URL("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM"+stockCode+"&apikey=demo");	    
+            URL url = new URL("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol="+stockCode+"&apikey=demo");
             connection = (HttpURLConnection) url.openConnection();
-
+		
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", MediaType.APPLICATION_JSON);
 
