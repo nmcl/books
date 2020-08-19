@@ -15,6 +15,13 @@ import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 public class SingleResource {
 
     @GET
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getStockWithCommand() throws Exception {
+        return this.getStockWithCommandRepeated("IBM", 1);
+    }
+    
+    @GET
     @Path("/{code}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getStockWithCommand(@PathParam("code") String stockCode) throws Exception {
@@ -26,7 +33,7 @@ public class SingleResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getStockWithCommandRepeated(@PathParam("code") String stockCode, @PathParam("repeat") int times) throws Exception {
         HystrixRequestContext context = HystrixRequestContext.initializeContext();
-
+	
         try {
             StringBuilder output = new StringBuilder();
 

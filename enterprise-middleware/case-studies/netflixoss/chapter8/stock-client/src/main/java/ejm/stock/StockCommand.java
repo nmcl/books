@@ -85,7 +85,7 @@ public class StockCommand extends HystrixCommand<String> {
                 response.append(output);
             }
 
-            System.err.println("Successfully executed stock price request for: " + this.stockCode);
+            System.err.println("Successfully executed stock price request for: " + this.stockCode+" "+response.toString());
 
             Double previousQuote = previousQuotes.get(stockCode);
 
@@ -93,11 +93,10 @@ public class StockCommand extends HystrixCommand<String> {
                 JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));
                 JsonObject object = jsonReader.readObject();
                 jsonReader.close();
+
                 previousQuotes.put(stockCode,
-                                   object.getJsonObject("Global Quote")
-                                           .getJsonObject("price")
-                                           .getJsonNumber("previous close")
-                                           .doubleValue());
+                                   Double.parseDouble(object.getJsonObject("Global Quote")
+						      .getJsonString("08. previous close").getString()));
             }
 
             return Json.createObjectBuilder()

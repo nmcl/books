@@ -69,10 +69,10 @@ public class StockObservableCommand extends HystrixObservableCommand<String> {
 
         HttpURLConnection connection = null;
 
-        try {
+	try {
             URL url = new URL("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol="+stockCode+"&apikey=demo");
             connection = (HttpURLConnection) url.openConnection();
-		
+
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", MediaType.APPLICATION_JSON);
 
@@ -88,7 +88,7 @@ public class StockObservableCommand extends HystrixObservableCommand<String> {
                 response.append(output);
             }
 
-            System.err.println("Successfully executed stock price request for: " + this.stockCode);
+            System.err.println("Successfully executed stock price request for: " + this.stockCode+" "+response.toString());
 
             Double previousQuote = previousQuotes.get(stockCode);
 
@@ -96,11 +96,10 @@ public class StockObservableCommand extends HystrixObservableCommand<String> {
                 JsonReader jsonReader = Json.createReader(new StringReader(response.toString()));
                 JsonObject object = jsonReader.readObject();
                 jsonReader.close();
+
                 previousQuotes.put(stockCode,
-                                   object.getJsonObject("Global Quote")
-                                           .getJsonObject("price")
-                                           .getJsonNumber("previous close")
-                                           .doubleValue());		
+                                   Double.parseDouble(object.getJsonObject("Global Quote")
+						      .getJsonString("08. previous close").getString()));
             }
 
             return Json.createObjectBuilder()
