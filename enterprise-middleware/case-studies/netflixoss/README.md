@@ -8,3 +8,5 @@ edited so they will build from here without needing the rest of the original boo
 is as per the original repository.
 
 Note, Java 1.8 only.
+
+Also heavily changed temporarily.
