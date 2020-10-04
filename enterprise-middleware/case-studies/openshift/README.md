@@ -1,3 +1,3 @@
-Openshift will serve as an example of PaaS cloud that can be used for managing containerized applications.
+Openshift will serve as an example of a PaaS cloud that can be used for managing containerized applications.
 
-Chapter will look at OpenShift but also the middleware services and frameworks that can be deployed onto it.
+The chapter will look at OpenShift but also the middleware services and frameworks that can be deployed onto it.
