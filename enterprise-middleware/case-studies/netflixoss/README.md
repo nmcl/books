@@ -9,6 +9,6 @@ is as per the original repository.
 
 Note, Java 1.8 only.
 
-Also heavily changed temporarily.
+DO NOT use chapter8.hack
 
 https://github.com/kenfinnigan/ejm-samples/issues/16
