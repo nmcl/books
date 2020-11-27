@@ -15,7 +15,7 @@ mvn clean package
 java -jar target/hystrix-dashboard-thorntail.jar
 
 After the dashboard is started, open a browser and navigate to
-http://localhost :8090/
+http://localhost:8090/
 
 Then add http://localhost:8080/hystrix.stream to stream monitor.
 
