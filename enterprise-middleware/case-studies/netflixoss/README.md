@@ -7,8 +7,6 @@ the book Enterprise Java Microservices (https://www.manning.com/books/enterprise
 edited so they will build from here without needing the rest of the original book's example code. Licence for this code
 is as per the original repository.
 
-Note, Java 1.8 only.
-
 ----
 
 cd hystrix-dashboard
