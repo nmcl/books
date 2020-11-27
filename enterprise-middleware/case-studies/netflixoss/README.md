@@ -8,7 +8,3 @@ edited so they will build from here without needing the rest of the original boo
 is as per the original repository.
 
 Note, Java 1.8 only.
-
-DO NOT use chapter8.hack
-
-https://github.com/kenfinnigan/ejm-samples/issues/16
