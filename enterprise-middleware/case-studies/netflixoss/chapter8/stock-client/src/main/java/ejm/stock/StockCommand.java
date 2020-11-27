@@ -41,7 +41,7 @@ public class StockCommand extends HystrixCommand<String> {
                       )
                       .andThreadPoolPropertiesDefaults(
                               HystrixThreadPoolProperties.Setter()
-                                      .withCoreSize(1)
+			      .withCoreSize(4)  // modified from original code
                       )
         );
 
